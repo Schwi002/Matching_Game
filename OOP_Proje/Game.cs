@@ -81,7 +81,7 @@ namespace OOP_Proje
                     return; // Handle unexpected sender type
 
                 if (clickedLabel.ForeColor == Color.Black || resetInProgress)
-                    return; // Ignore click on already revealed icon or during reset
+                    return; // Önceden tıklanmış simgeye tıklamayı veya reset boolu açıkken tıklamayı önler
 
                 moveCount--;
                 lblMoves.Text = moveCount.ToString()+GetMoves();
@@ -96,7 +96,7 @@ namespace OOP_Proje
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
 
-                // Check for a match
+                // Simgeler eşleşmiş mi kontrol eder
                 if (firstClicked.Text == secondClicked.Text)
                 {
                     firstClicked.BackColor = Color.Red;
@@ -106,8 +106,8 @@ namespace OOP_Proje
                 }
                 else
                 {
-                    // If no match, reset colors after a short delay     
-                    // Set the flag to indicate reset operation is in progress
+                    // Simgeler eşleşmezse tekrar arkaplanla aynı renge getirir   
+                    // Simgelere bastıktan sonra kısa süreliğine basmayı engelleyerek hata almayı önler
                     resetInProgress = true;
 
                     await Task.Delay(750);
@@ -117,11 +117,11 @@ namespace OOP_Proje
                     firstClicked = null;
                     secondClicked = null;
 
-                    // Reset the flag after the reset operation is completed
+                    // bool değeri eski haline getirerek tekrar hamle yapmayı sağlar
                     resetInProgress = false;
                 }
 
-                // Check for winner
+                // Kazanma veya kaybetme koşulunu çalıştırır
                 CheckForWinner();
             }
             catch (Exception ex)
