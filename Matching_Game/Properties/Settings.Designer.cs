@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OOP_Proje.Properties
+namespace Matching_Game.Properties
 {
 
 

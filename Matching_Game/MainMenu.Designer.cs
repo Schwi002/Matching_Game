@@ -1,4 +1,4 @@
-﻿namespace OOP_Proje
+﻿namespace Matching_Game
 {
     partial class MainMenu
     {
@@ -46,7 +46,7 @@
             this.btnEasy.TabIndex = 0;
             this.btnEasy.Text = "\r\n\r\nEasy\r\n\r\n60 Moves";
             this.btnEasy.UseVisualStyleBackColor = false;
-            this.btnEasy.Click += new System.EventHandler(this.btnClick);
+            this.btnEasy.Click += new System.EventHandler(this.BtnClick);
             // 
             // btnNormal
             // 
@@ -59,7 +59,7 @@
             this.btnNormal.TabIndex = 1;
             this.btnNormal.Text = "\r\n\r\nNormal\r\n\r\n50 Moves";
             this.btnNormal.UseVisualStyleBackColor = false;
-            this.btnNormal.Click += new System.EventHandler(this.btnClick);
+            this.btnNormal.Click += new System.EventHandler(this.BtnClick);
             // 
             // btnHard
             // 
@@ -72,7 +72,7 @@
             this.btnHard.TabIndex = 2;
             this.btnHard.Text = "\r\n\r\nHard\r\n\r\n40 Moves";
             this.btnHard.UseVisualStyleBackColor = false;
-            this.btnHard.Click += new System.EventHandler(this.btnClick);
+            this.btnHard.Click += new System.EventHandler(this.BtnClick);
             // 
             // rdbTR
             // 
@@ -85,7 +85,7 @@
             this.rdbTR.TabStop = true;
             this.rdbTR.Text = "TR";
             this.rdbTR.UseVisualStyleBackColor = true;
-            this.rdbTR.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            this.rdbTR.CheckedChanged += new System.EventHandler(this.Rdb_CheckedChanged);
             // 
             // rdbEN
             // 
@@ -98,7 +98,7 @@
             this.rdbEN.TabStop = true;
             this.rdbEN.Text = "EN";
             this.rdbEN.UseVisualStyleBackColor = true;
-            this.rdbEN.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            this.rdbEN.CheckedChanged += new System.EventHandler(this.Rdb_CheckedChanged);
             // 
             // MainMenu
             // 

@@ -1,4 +1,4 @@
-﻿namespace OOP_Proje
+﻿namespace Matching_Game
 {
     partial class Game
     {
@@ -50,6 +50,7 @@
             this.lbl2x1 = new System.Windows.Forms.Label();
             this.lbl1x1 = new System.Windows.Forms.Label();
             this.lblMoves = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
             this.tblGame.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             this.lbl5x4.Text = "c";
             this.lbl5x4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl5x4.UseCompatibleTextRendering = true;
-            this.lbl5x4.Click += new System.EventHandler(this.label_Click);
+            this.lbl5x4.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl4x4
             // 
@@ -122,7 +123,7 @@
             this.lbl4x4.Text = "c";
             this.lbl4x4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl4x4.UseCompatibleTextRendering = true;
-            this.lbl4x4.Click += new System.EventHandler(this.label_Click);
+            this.lbl4x4.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl3x4
             // 
@@ -136,7 +137,7 @@
             this.lbl3x4.Text = "c";
             this.lbl3x4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl3x4.UseCompatibleTextRendering = true;
-            this.lbl3x4.Click += new System.EventHandler(this.label_Click);
+            this.lbl3x4.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl2x4
             // 
@@ -150,7 +151,7 @@
             this.lbl2x4.Text = "c";
             this.lbl2x4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl2x4.UseCompatibleTextRendering = true;
-            this.lbl2x4.Click += new System.EventHandler(this.label_Click);
+            this.lbl2x4.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl1x4
             // 
@@ -164,7 +165,7 @@
             this.lbl1x4.Text = "c";
             this.lbl1x4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl1x4.UseCompatibleTextRendering = true;
-            this.lbl1x4.Click += new System.EventHandler(this.label_Click);
+            this.lbl1x4.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl5x3
             // 
@@ -178,7 +179,7 @@
             this.lbl5x3.Text = "c";
             this.lbl5x3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl5x3.UseCompatibleTextRendering = true;
-            this.lbl5x3.Click += new System.EventHandler(this.label_Click);
+            this.lbl5x3.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl4x3
             // 
@@ -192,7 +193,7 @@
             this.lbl4x3.Text = "c";
             this.lbl4x3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl4x3.UseCompatibleTextRendering = true;
-            this.lbl4x3.Click += new System.EventHandler(this.label_Click);
+            this.lbl4x3.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl3x3
             // 
@@ -206,7 +207,7 @@
             this.lbl3x3.Text = "c";
             this.lbl3x3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl3x3.UseCompatibleTextRendering = true;
-            this.lbl3x3.Click += new System.EventHandler(this.label_Click);
+            this.lbl3x3.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl2x3
             // 
@@ -220,7 +221,7 @@
             this.lbl2x3.Text = "c";
             this.lbl2x3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl2x3.UseCompatibleTextRendering = true;
-            this.lbl2x3.Click += new System.EventHandler(this.label_Click);
+            this.lbl2x3.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl1x3
             // 
@@ -234,7 +235,7 @@
             this.lbl1x3.Text = "c";
             this.lbl1x3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl1x3.UseCompatibleTextRendering = true;
-            this.lbl1x3.Click += new System.EventHandler(this.label_Click);
+            this.lbl1x3.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl5x2
             // 
@@ -248,7 +249,7 @@
             this.lbl5x2.Text = "c";
             this.lbl5x2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl5x2.UseCompatibleTextRendering = true;
-            this.lbl5x2.Click += new System.EventHandler(this.label_Click);
+            this.lbl5x2.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl4x2
             // 
@@ -262,7 +263,7 @@
             this.lbl4x2.Text = "c";
             this.lbl4x2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl4x2.UseCompatibleTextRendering = true;
-            this.lbl4x2.Click += new System.EventHandler(this.label_Click);
+            this.lbl4x2.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl3x2
             // 
@@ -276,7 +277,7 @@
             this.lbl3x2.Text = "c";
             this.lbl3x2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl3x2.UseCompatibleTextRendering = true;
-            this.lbl3x2.Click += new System.EventHandler(this.label_Click);
+            this.lbl3x2.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl2x2
             // 
@@ -290,7 +291,7 @@
             this.lbl2x2.Text = "c";
             this.lbl2x2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl2x2.UseCompatibleTextRendering = true;
-            this.lbl2x2.Click += new System.EventHandler(this.label_Click);
+            this.lbl2x2.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl1x2
             // 
@@ -304,7 +305,7 @@
             this.lbl1x2.Text = "c";
             this.lbl1x2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl1x2.UseCompatibleTextRendering = true;
-            this.lbl1x2.Click += new System.EventHandler(this.label_Click);
+            this.lbl1x2.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl5x1
             // 
@@ -318,7 +319,7 @@
             this.lbl5x1.Text = "c";
             this.lbl5x1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl5x1.UseCompatibleTextRendering = true;
-            this.lbl5x1.Click += new System.EventHandler(this.label_Click);
+            this.lbl5x1.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl4x1
             // 
@@ -332,7 +333,7 @@
             this.lbl4x1.Text = "c";
             this.lbl4x1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl4x1.UseCompatibleTextRendering = true;
-            this.lbl4x1.Click += new System.EventHandler(this.label_Click);
+            this.lbl4x1.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl3x1
             // 
@@ -346,7 +347,7 @@
             this.lbl3x1.Text = "c";
             this.lbl3x1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl3x1.UseCompatibleTextRendering = true;
-            this.lbl3x1.Click += new System.EventHandler(this.label_Click);
+            this.lbl3x1.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl2x1
             // 
@@ -360,7 +361,7 @@
             this.lbl2x1.Text = "c";
             this.lbl2x1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl2x1.UseCompatibleTextRendering = true;
-            this.lbl2x1.Click += new System.EventHandler(this.label_Click);
+            this.lbl2x1.Click += new System.EventHandler(this.Label_Click);
             // 
             // lbl1x1
             // 
@@ -374,7 +375,7 @@
             this.lbl1x1.Text = "c";
             this.lbl1x1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl1x1.UseCompatibleTextRendering = true;
-            this.lbl1x1.Click += new System.EventHandler(this.label_Click);
+            this.lbl1x1.Click += new System.EventHandler(this.Label_Click);
             // 
             // lblMoves
             // 
@@ -385,11 +386,21 @@
             this.lblMoves.TabIndex = 1;
             this.lblMoves.Text = "0 Moves Left";
             // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Location = new System.Drawing.Point(510, 9);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(47, 13);
+            this.lblScore.TabIndex = 2;
+            this.lblScore.Text = "Score: 0";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblMoves);
             this.Controls.Add(this.tblGame);
             this.MaximizeBox = false;
@@ -429,5 +440,6 @@
         private System.Windows.Forms.Label lbl4x1;
         private System.Windows.Forms.Label lbl3x1;
         private System.Windows.Forms.Label lbl2x1;
+        private System.Windows.Forms.Label lblScore;
     }
 }

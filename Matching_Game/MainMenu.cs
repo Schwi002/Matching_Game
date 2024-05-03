@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Proje
+namespace Matching_Game
 {
     public partial class MainMenu : Form
     {
@@ -16,7 +9,7 @@ namespace OOP_Proje
         {
             InitializeComponent();
         }
-        private void rdb_CheckedChanged(object sender, EventArgs e)
+        private void Rdb_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbEN.Checked)
             {
@@ -34,7 +27,7 @@ namespace OOP_Proje
             }
         }
 
-        private void btnClick(object sender, EventArgs e)
+        private void BtnClick(object sender, EventArgs e)
         {
             string GameDifficulty;
             string GameLanguage;
@@ -47,13 +40,26 @@ namespace OOP_Proje
                 GameLanguage = "TR";
             }
             Button clickedButton = sender as Button;
-            GameDifficulty = clickedButton.Name;
+            if (clickedButton == btnHard)
+            {
+                GameDifficulty = "Hard";
+            }
+            else if (clickedButton == btnNormal)
+            {
+                GameDifficulty = "Normal";
+            }
+            else
+            {
+                GameDifficulty = "Easy";
+            }
             this.Hide();
-            Game game = new Game();
-            game.gameDifficulty = GameDifficulty;
-            game.gameLanguage = GameLanguage;
+            Game game = new Game()
+            {
+                GameDifficulty = GameDifficulty,
+                GameLanguage = GameLanguage
+            };
             game.ShowDialog();
             this.Show();
-        }       
+        }
     }
 }

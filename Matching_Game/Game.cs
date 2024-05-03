@@ -1,39 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Proje
+namespace Matching_Game
 {
     public partial class Game : Form
     {
-        public string gameDifficulty { get ; set; }
-        public string gameLanguage { get; set; }
+        public string GameDifficulty { get; set; }
+        public string GameLanguage { get; set; }
         int moveCount = 0;
+        int gameScore = 0;
 
         public Game()
         {
             InitializeComponent();
-            AssignIconsToSquares();      
+            AssignIconsToSquares();
         }
         private void Game_Load(object sender, EventArgs e)
         {
             SetGameDifficulty();
             GetLanguage();
+            lblMoves.Text = GetMoves();
         }
 
         private void SetGameDifficulty()
         {
-            if (gameDifficulty == "btnEasy")
+            if (GameDifficulty == "Easy")
             {
                 moveCount = 60;
             }
-            else if (gameDifficulty == "btnNormal")
+            else if (GameDifficulty == "Normal")
             {
                 moveCount = 50;
             }
@@ -47,9 +45,9 @@ namespace OOP_Proje
         Label firstClicked = null;
         Label secondClicked = null;
 
-        Random random = new Random();
+        readonly Random random = new Random();
         //Webding fontuyla kullanacağımız karakter listesi
-        List<string> icons = new List<string>()
+        readonly List<string> icons = new List<string>()
         {
         "!", "!", "N", "N", "Y", "Y", "k", "k", "n", "n", "b", "b", "v", "v", "w", "w", "z", "z", "R", "R"
         };
@@ -59,8 +57,7 @@ namespace OOP_Proje
             // tblGame içindeki her label için listeden rastgele simge ekler
             foreach (Control control in tblGame.Controls)
             {
-                Label iconLabel = control as Label;
-                if (iconLabel != null)
+                if (control is Label iconLabel)
                 {
                     int randomNumber = random.Next(icons.Count);
                     iconLabel.Text = icons[randomNumber];
@@ -71,26 +68,33 @@ namespace OOP_Proje
         }
         // labellara hızlı tıklayıp oyunun kitlenmesini önlemek için gerekli değer
         private bool resetInProgress = false;
-        private async void label_Click(object sender, EventArgs e)
+        private async void Label_Click(object sender, EventArgs e)
         {
             try
             {
-                Label clickedLabel = sender as Label;
-
-                if (clickedLabel == null)
+                if (!(sender is Label clickedLabel))
                     return; // Handle unexpected sender type
 
                 if (clickedLabel.ForeColor == Color.Black || resetInProgress)
                     return; // Önceden tıklanmış simgeye tıklamayı veya reset boolu açıkken tıklamayı önler
 
                 moveCount--;
-                lblMoves.Text = moveCount.ToString()+GetMoves();
+                lblMoves.Text = GetMoves();
+                lblScore.Text = GetScore();
 
                 if (firstClicked == null)
                 {
                     firstClicked = clickedLabel;
                     firstClicked.ForeColor = Color.Black;
-                    return;
+                    if (moveCount < 1)
+                    {
+                        MessageBox.Show(GetGameOverMessage(), GetGameOverTitle());
+                        this.Hide();
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
 
                 secondClicked = clickedLabel;
@@ -99,6 +103,21 @@ namespace OOP_Proje
                 // Simgeler eşleşmiş mi kontrol eder
                 if (firstClicked.Text == secondClicked.Text)
                 {
+                    if (GameDifficulty == "Easy")
+                    {
+                        gameScore += 10;
+                    }
+                    else if (GameDifficulty == "Normal")
+                    {
+                        gameScore += 20;
+                    }
+                    else
+                    {
+                        gameScore += 50;
+                    }
+
+                    lblMoves.Text = GetMoves();
+                    lblScore.Text = GetScore();
                     firstClicked.BackColor = Color.Red;
                     secondClicked.BackColor = Color.Red;
                     firstClicked = null;
@@ -123,41 +142,80 @@ namespace OOP_Proje
 
                 // Kazanma veya kaybetme koşulunu çalıştırır
                 CheckForWinner();
+                lblScore.Text = GetScore();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(GetErrorMessage() + ex.Message);
             }
         }
-    private void CheckForWinner()
+        private void CheckForWinner()
         {
-            if (moveCount == 0)
-            {
-                MessageBox.Show(GetGameOverMessage(), GetGameOverTitle());
-                this.Hide();
-            }
-            else
+            if (moveCount > 0)
             {
                 // tblGame içindeki labelların ForeColor ve BackColor'ı aynı mı diye kontrol ederek oyunun bitip bitmediğini anlar
                 foreach (Control control in tblGame.Controls)
                 {
-                    Label iconLabel = control as Label;
-
-                    if (iconLabel != null)
+                    if (control is Label iconLabel)
                     {
                         if (iconLabel.ForeColor == iconLabel.BackColor)
                             return;
                     }
                 }
-
+                if (GameDifficulty == "Easy")
+                {
+                    gameScore *= 2 + moveCount * 2;
+                }
+                else if (GameDifficulty == "Normal")
+                {
+                    gameScore *= 4 + moveCount * 4;
+                }
+                else
+                {
+                    gameScore *= 10 + moveCount * 10;
+                }
                 // koşullar sağlanmadığı zaman oyun biter ve formu gizler, böylece ana menüye geri döneriz
                 MessageBox.Show(GetCongratulationsMessage(), GetCongratulationsTitle());
+                this.Hide();
+            }
+            else if (moveCount < 1 && gameScore >= 100)
+            {
+                if (GameDifficulty == "Easy")
+                {
+                    gameScore *= 1;
+                }
+                else if (GameDifficulty == "Normal")
+                {
+                    gameScore *= 2;
+                }
+                else
+                {
+                    gameScore *= 5;
+                }
+                MessageBox.Show(GetCongratulationsMessage(), GetCongratulationsTitle());
+                this.Hide();
+            }
+            else if (moveCount < 1)
+            {
+                if (GameDifficulty == "Easy")
+                {
+                    gameScore *= 1;
+                }
+                else if (GameDifficulty == "Normal")
+                {
+                    gameScore *= 2;
+                }
+                else
+                {
+                    gameScore *= 5;
+                }
+                MessageBox.Show(GetGameOverMessage(), GetGameOverTitle());
                 this.Hide();
             }
         }
         private void GetLanguage()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
                 this.Text = "Oyun";
                 lblMoves.Text = "0 Hamle Kaldı";
@@ -168,20 +226,31 @@ namespace OOP_Proje
                 lblMoves.Text = "0 Moves Left";
             }
         }
-        private string GetMoves()
+        private string GetScore()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
-                return " Hamle Kaldı";
+                return "Skor: " + gameScore;
             }
             else
             {
-                return " Moves Left";
+                return "Score: " + gameScore;
+            }
+        }
+        private string GetMoves()
+        {
+            if (GameLanguage == "TR")
+            {
+                return moveCount + " Hamle Kaldı";
+            }
+            else
+            {
+                return moveCount + " Moves Left";
             }
         }
         private string GetErrorMessage()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
                 return "Bir hata oluştu: ";
             }
@@ -192,19 +261,19 @@ namespace OOP_Proje
         }
         private string GetGameOverMessage()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
-                return "Hamleleriniz bitti! Kaybettiniz.";
+                return "Hamleleriniz bitti! Kaybettiniz. Toplam Skor: " + gameScore;
             }
             else
             {
-                return "You are out of moves! Game over.";
+                return "You are out of moves! Game over. Total Score: " + gameScore;
             }
         }
 
         private string GetGameOverTitle()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
                 return "Oyun Bitti";
             }
@@ -215,19 +284,19 @@ namespace OOP_Proje
         }
         private string GetCongratulationsMessage()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
-                return "Tüm simgeleri eşleştirdiniz! Tebrikler";
+                return "Tüm simgeleri eşleştirdiniz! Tebrikler! Toplam Skor: " + gameScore;
             }
             else
             {
-                return "You matched all the icons! Congratulations";
+                return "You matched all the icons! Congratulations! Total Score: " + gameScore;
             }
         }
 
         private string GetCongratulationsTitle()
         {
-            if (gameLanguage == "TR")
+            if (GameLanguage == "TR")
             {
                 return "Tebrikler";
             }
