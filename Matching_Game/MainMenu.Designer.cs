@@ -40,7 +40,7 @@
             this.btnEasy.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btnEasy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEasy.Location = new System.Drawing.Point(40, 12);
+            this.btnEasy.Location = new System.Drawing.Point(46, 12);
             this.btnEasy.Name = "btnEasy";
             this.btnEasy.Size = new System.Drawing.Size(100, 100);
             this.btnEasy.TabIndex = 0;
@@ -53,7 +53,7 @@
             this.btnNormal.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btnNormal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(40, 130);
+            this.btnNormal.Location = new System.Drawing.Point(46, 130);
             this.btnNormal.Name = "btnNormal";
             this.btnNormal.Size = new System.Drawing.Size(100, 100);
             this.btnNormal.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.btnHard.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btnHard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHard.Location = new System.Drawing.Point(40, 249);
+            this.btnHard.Location = new System.Drawing.Point(46, 249);
             this.btnHard.Name = "btnHard";
             this.btnHard.Size = new System.Drawing.Size(100, 100);
             this.btnHard.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.rdbTR.AutoSize = true;
             this.rdbTR.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rdbTR.Location = new System.Drawing.Point(-6, 332);
+            this.rdbTR.Location = new System.Drawing.Point(0, 332);
             this.rdbTR.Name = "rdbTR";
             this.rdbTR.Size = new System.Drawing.Size(40, 17);
             this.rdbTR.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             this.rdbEN.AutoSize = true;
             this.rdbEN.Checked = true;
-            this.rdbEN.Location = new System.Drawing.Point(146, 332);
+            this.rdbEN.Location = new System.Drawing.Point(152, 332);
             this.rdbEN.Name = "rdbEN";
             this.rdbEN.Size = new System.Drawing.Size(40, 17);
             this.rdbEN.TabIndex = 4;
@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(184, 361);
+            this.ClientSize = new System.Drawing.Size(194, 361);
             this.Controls.Add(this.rdbEN);
             this.Controls.Add(this.rdbTR);
             this.Controls.Add(this.btnHard);

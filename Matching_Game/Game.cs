@@ -23,21 +23,22 @@ namespace Matching_Game
             SetGameDifficulty();
             GetLanguage();
             lblMoves.Text = GetMoves();
+            lblScore.Text = GetScore();
         }
 
         private void SetGameDifficulty()
         {
-            if (GameDifficulty == "Easy")
+            switch (GameDifficulty)
             {
-                moveCount = 60;
-            }
-            else if (GameDifficulty == "Normal")
-            {
-                moveCount = 50;
-            }
-            else
-            {
-                moveCount = 40;
+                case "Easy":
+                    moveCount = 60;
+                    break;
+                case "Normal":
+                    moveCount = 50;
+                    break;
+                case "Hard":
+                    moveCount = 40;
+                    break;
             }
             lblMoves.Text = moveCount.ToString();
         }
@@ -103,23 +104,26 @@ namespace Matching_Game
                 // Simgeler eşleşmiş mi kontrol eder
                 if (firstClicked.Text == secondClicked.Text)
                 {
-                    if (GameDifficulty == "Easy")
+                    // Zorluğa göre skoru arttırır
+                    switch (GameDifficulty)
                     {
-                        gameScore += 10;
-                    }
-                    else if (GameDifficulty == "Normal")
-                    {
-                        gameScore += 20;
-                    }
-                    else
-                    {
-                        gameScore += 50;
+                        case "Easy":
+                            gameScore += 10;
+                            break;
+                        case "Normal":
+                            gameScore += 20;
+                            break;
+                        case "Hard":
+                            gameScore += 50;
+                            break;
                     }
 
                     lblMoves.Text = GetMoves();
                     lblScore.Text = GetScore();
-                    firstClicked.BackColor = Color.Red;
-                    secondClicked.BackColor = Color.Red;
+                    firstClicked.BackColor = Color.Green;
+                    secondClicked.BackColor = Color.Green;
+                    firstClicked.Cursor = DefaultCursor;
+                    secondClicked.Cursor = DefaultCursor;
                     firstClicked = null;
                     secondClicked = null;
                 }
@@ -162,53 +166,42 @@ namespace Matching_Game
                             return;
                     }
                 }
-                if (GameDifficulty == "Easy")
+                switch (GameDifficulty)
                 {
-                    gameScore *= 2 + moveCount * 2;
-                }
-                else if (GameDifficulty == "Normal")
-                {
-                    gameScore *= 4 + moveCount * 4;
-                }
-                else
-                {
-                    gameScore *= 10 + moveCount * 10;
+                    case "Easy":
+                        gameScore += 100 + moveCount * 10;
+                        break;
+                    case "Normal":
+                        gameScore += 200 + moveCount * 20;
+                        break;
+                    case "Hard":
+                        gameScore += 500 + moveCount * 50;
+                        break;
                 }
                 // koşullar sağlanmadığı zaman oyun biter ve formu gizler, böylece ana menüye geri döneriz
                 MessageBox.Show(GetCongratulationsMessage(), GetCongratulationsTitle());
                 this.Hide();
             }
-            else if (moveCount < 1 && gameScore >= 100)
+            else if (moveCount < 1 && gameScore >= 100 && GameDifficulty == "Easy")
             {
-                if (GameDifficulty == "Easy")
-                {
-                    gameScore *= 1;
-                }
-                else if (GameDifficulty == "Normal")
-                {
-                    gameScore *= 2;
-                }
-                else
-                {
-                    gameScore *= 5;
-                }
+                gameScore += 100;
+                MessageBox.Show(GetCongratulationsMessage(), GetCongratulationsTitle());
+                this.Hide();
+            }
+            else if (moveCount < 1 && gameScore >= 200 && GameDifficulty == "Normal")
+            {
+                gameScore += 200;
+                MessageBox.Show(GetCongratulationsMessage(), GetCongratulationsTitle());
+                this.Hide();
+            }
+            else if (moveCount < 1 && gameScore >= 500 && GameDifficulty == "Hard")
+            {
+                gameScore += 500;
                 MessageBox.Show(GetCongratulationsMessage(), GetCongratulationsTitle());
                 this.Hide();
             }
             else if (moveCount < 1)
             {
-                if (GameDifficulty == "Easy")
-                {
-                    gameScore *= 1;
-                }
-                else if (GameDifficulty == "Normal")
-                {
-                    gameScore *= 2;
-                }
-                else
-                {
-                    gameScore *= 5;
-                }
                 MessageBox.Show(GetGameOverMessage(), GetGameOverTitle());
                 this.Hide();
             }
@@ -217,12 +210,12 @@ namespace Matching_Game
         {
             if (GameLanguage == "TR")
             {
-                this.Text = "Oyun";
+                this.Text = "Eşleştirme Oyunu";
                 lblMoves.Text = "0 Hamle Kaldı";
             }
             else
             {
-                this.Text = "Game";
+                this.Text = "Matching Game";
                 lblMoves.Text = "0 Moves Left";
             }
         }
